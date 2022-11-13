@@ -1,4 +1,3 @@
-"""Main module for the streamlit app"""
 import os.path as op
 import sys
 
@@ -6,15 +5,12 @@ import streamlit as st
 
 sys.path.append(op.abspath(op.join(op.dirname(__file__), "..")))
 
-from app.contents import home, debt
+from app.contents import debt, home, labor
 
 
 # Generate sidebar elements
 def generate_sidebar_elements():
-    pages = {
-        "Home": home,
-        "Debt": debt
-    }
+    pages = {"Home": home, "Labor": labor, "Debt": debt}
 
     # Sidebar -- Image/Title
     # st.sidebar.image(

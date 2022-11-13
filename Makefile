@@ -3,7 +3,7 @@
 
 SHELL := /bin/bash
 
-.PHONY: activate requirements build run trunk app
+.PHONY: activate requirements build run format app
 
 build:
 	cd ../.. && \
@@ -28,6 +28,8 @@ requirements:
 	poetry export -f requirements.txt --without-hashes | cut -f1 -d\; > requirements.txt
 
 
-trunk:
-	trunk check ./ && \
-    trunk fmt ./
+format:
+	poetry run isort . && \
+	poetry run black ./ && \
+	poetry run flake8 ./ 
+	

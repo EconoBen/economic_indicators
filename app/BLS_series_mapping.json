@@ -1,0 +1,8 @@
+{
+    "Civilian Labor Force": ["LNS11000000", "M"],
+    "Unemployment Rate": ["LNS14000000", "M"],
+    "Labor Productivity (Output Per Hour)": ["PRS85006092", "Q"],
+    "Unit Labor Costs": ["PRS85006112", "Q"],
+    "Multifactor Productivity for Private Non-Farm Business Sector": ["MPU4910012", "A"],
+    "Consumer Price Index": ["CUUR0000SA0", "M"]
+}

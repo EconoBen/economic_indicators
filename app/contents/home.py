@@ -8,9 +8,10 @@ def run():
     """
     st.title("Economic Indicators")
 
-    st.markdown("""
-                There are many useful economic indicators out there. This dashboard contains those I tend to watch.
+    st.markdown(
+        """
+        There are many useful economic indicators out there. This dashboard contains those I tend to watch.
                 
-                All sources cited.
-                """)
-
+        All sources cited.
+        """
+    )

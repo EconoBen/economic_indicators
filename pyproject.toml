@@ -14,8 +14,15 @@ pandas = "^1.5.1"
 openpyxl = "^3.0.10"
 matplotlib = "^3.6.2"
 plotly = "^5.11.0"
+prettytable = "^3.5.0"
+python-dotenv = "^0.21.0"
 
 [tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+flake8 = "^5.0.4"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
