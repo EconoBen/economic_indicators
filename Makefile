@@ -6,12 +6,10 @@ SHELL := /bin/bash
 .PHONY: activate requirements build run format app
 
 build:
-	cd ../.. && \
-	docker build -f ./app/Dockerfile -t vae .
+	docker build -f ./Dockerfile -t economic_indicators .
 
 run: build
-	cd ../.. && \
-	docker run --env-file ./app/.integration.env --rm -it --name vae -p 8000:8000 vae
+	docker run --env-file ./app/.env --rm -it --name economic_indicators -p 8501:8501 economic_indicators
 
 app:
 	poetry run streamlit run app/main.py
