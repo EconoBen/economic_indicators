@@ -1,17 +1,26 @@
 from datetime import datetime
 from json import load
+from os import environ
+from pathlib import Path
 
 import streamlit as st
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 
 from app.utils import read_timeseries
+
+
+def get_api_key():
+    """Get BLS API Key"""
+    if Path("app/.env").exists():
+        load_dotenv()
+
+    return environ["APIKEY"]
 
 
 def run():
     """
     Run homepage.
     """
-    env_config = dotenv_values("app/.env")
 
     st.title("Economic Indicators")
 
@@ -45,5 +54,5 @@ def run():
         freq=freq_id,
         start_year=start_year,
         end_year=end_year,
-        apikey=env_config["APIKEY"],
+        apikey=get_api_key(),
     )
