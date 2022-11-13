@@ -1,6 +1,6 @@
 from datetime import datetime
 from json import load
-from os import environ
+from os import environ, system
 from pathlib import Path
 
 import streamlit as st
@@ -14,7 +14,11 @@ def get_api_key():
     if Path("app/.env").exists():
         load_dotenv()
 
-    return environ["APIKEY"]
+    key = environ["APIKEY"]
+
+    assert isinstance(key, str)
+
+    return key
 
 
 def run():
@@ -22,7 +26,9 @@ def run():
     Run homepage.
     """
 
-    st.title("Economic Indicators")
+    st.title("Labor Indicators")
+    
+    
 
     with open("app/BLS_series_mapping.json") as json_file:
         bls_mapping = load(json_file)
@@ -39,6 +45,7 @@ def run():
     end_year_options = [str(x) for x in range(int(start_year), int(current_year) + 1)][
         ::-1
     ]
+    
     end_year = st.selectbox("End Year", end_year_options, index=0)
 
     value_type = ["Level", "Index from Start Year"]
@@ -46,6 +53,8 @@ def run():
 
     if int(end_year) - int(start_year) > 20:
         raise ValueError("Start and End Years must be a maximum of 20 years apart.")
+
+    system("poetry run streamlit cache clear")
 
     read_timeseries(
         series_id=series_id,
@@ -56,3 +65,4 @@ def run():
         end_year=end_year,
         apikey=get_api_key(),
     )
+    st.caption("Source: US Dept. of Labor, Bureau of Labor Statistics")

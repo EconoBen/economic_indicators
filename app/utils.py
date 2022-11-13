@@ -17,7 +17,7 @@ def plot_timeseries(data: pd.DataFrame, series_choice: str) -> None:
 
     # Create traces
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=data["Date"], y=data["Value"]))
+    fig.add_trace(go.Scatter(x=data["Date"], y=data["Value"], line=dict(color="crimson")))
 
     fig.update_traces(mode="markers+lines")
     fig.update_layout(
@@ -26,7 +26,6 @@ def plot_timeseries(data: pd.DataFrame, series_choice: str) -> None:
     st.write(fig)
 
 
-@st.cache(suppress_st_warning=True)
 def read_timeseries(
     series_id: str,
     series_choice: str,

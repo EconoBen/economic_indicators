@@ -1,3 +1,5 @@
+app/notebooks
+
 # AWS
 .aws-sam
 template.yaml

@@ -46,6 +46,8 @@ def bar_plot():
         y=total_debt.columns,
         labels={"variable": "Debt Type"},
         title=title,
+        width=800, 
+        height=400
     )
     fig.update_xaxes(
         tickvals=total_debt.index[::4], tickangle=45, tickfont=dict(size=12)
@@ -54,7 +56,9 @@ def bar_plot():
         title=y_axis, tickfont=dict(size=12), tickprefix="$", showgrid=False
     )
 
-    st.plotly_chart(fig)
+    fig.update_layout(width=1000, height=1000)
+
+    st.plotly_chart(fig, use_container_width=True)
     st.caption(source)
 
 
