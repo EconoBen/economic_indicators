@@ -10,7 +10,7 @@ show_pages_from_config()
 
 def main():
     """Main function of the App"""
-    st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com) \n 
+    st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com/?page_id=10) \n 
 👾 [Repo](https://github.com/EconoBen/economic_indicators)"""
 )
 

@@ -55,7 +55,7 @@ def run():
     )
     st.caption("Source: US Dept. of Labor, Bureau of Labor Statistics")
 
-st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com) \n 
+st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com/?page_id=10) \n 
 👾 [Repo](https://github.com/EconoBen/economic_indicators)"""
 )
 run()

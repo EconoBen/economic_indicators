@@ -122,7 +122,7 @@ def run():
 
     st.caption("Source: Bureau of Labor Statistics. All stats seasonally adjusted")
 
-st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com) \n 
+st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com/?page_id=10) \n 
 👾 [Repo](https://github.com/EconoBen/economic_indicators)"""
 )
 run()
