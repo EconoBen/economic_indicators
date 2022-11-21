@@ -11,7 +11,6 @@ show_pages_from_config()
 
 def main():
     """Main function of the App"""
-    run()
 
 if __name__ == "__main__":
     main()
