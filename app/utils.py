@@ -7,25 +7,21 @@ import plotly.graph_objects as go
 import streamlit as st
 from dotenv import load_dotenv
 import requests_cache
+from os import environ
 
 
+def get_api_key():
+    """Get BLS API Key"""
+    if Path("app/.env").exists():
+        load_dotenv()
+
+    assert isinstance(environ["APIKEY"], str) , "API Key not loaded."
+    assert isinstance(environ["FREDKEY"], str), "FRED API Key not loaded."
 
 class BLS:
     def __init__(self):
-        self.api_key = self.get_api_key()
+        self.api_key = environ.get("APIKEY")
         self.session = requests_cache.CachedSession("BLS_Requests")
-
-    def get_api_key(self):
-        """Get BLS API Key"""
-        if Path("app/.env").exists():
-            load_dotenv()
-
-        key = environ["APIKEY"]
-
-        assert isinstance(key, str)
-
-        return key
-
 
     def read_timeseries(self,
         series_id: str,

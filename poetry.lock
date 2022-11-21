@@ -392,6 +392,17 @@ unicode = ["unicodedata2 (>=14.0.0)"]
 woff = ["brotli (>=1.0.1)", "brotlicffi (>=0.8.0)", "zopfli (>=0.1.4)"]
 
 [[package]]
+name = "fredapi"
+version = "0.5.0"
+description = "Python API for Federal Reserve Economic Data (FRED) from St. Louis Fed"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pandas = "*"
+
+[[package]]
 name = "gitdb"
 version = "4.0.9"
 description = "Git Object Database"
@@ -1753,7 +1764,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.10.4"
-content-hash = "3fad20585286f64a3633ab509c6719f93934b883fbef10120faa95bc34d20cf4"
+content-hash = "081a3133b16a96b7eea25f5450c0e4b075cb94665c26899f04a7c1096734d933"
 
 [metadata.files]
 altair = [
@@ -2070,6 +2081,10 @@ flake8 = [
 fonttools = [
     {file = "fonttools-4.38.0-py3-none-any.whl", hash = "sha256:820466f43c8be8c3009aef8b87e785014133508f0de64ec469e4efb643ae54fb"},
     {file = "fonttools-4.38.0.zip", hash = "sha256:2bb244009f9bf3fa100fc3ead6aeb99febe5985fa20afbfbaa2f8946c2fbdaf1"},
+]
+fredapi = [
+    {file = "fredapi-0.5.0-py3-none-any.whl", hash = "sha256:7d6b2d272ff831870a8b113f07bcf65a2aca2f97903410c8904eb6e779fd9e3c"},
+    {file = "fredapi-0.5.0.tar.gz", hash = "sha256:7e15a9b582b5dca67404f0807e351f8e638aa62057398e3654608ac5b021f782"},
 ]
 gitdb = [
     {file = "gitdb-4.0.9-py3-none-any.whl", hash = "sha256:8033ad4e853066ba6ca92050b9df2f89301b8fc8bf7e9324d412a63f8bf1a8fd"},

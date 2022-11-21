@@ -5,14 +5,14 @@ import streamlit as st
 
 sys.path.append(op.abspath(op.join(op.dirname(__file__), "..")))
 
+from app.pages._home import run
+
 show_pages_from_config()
 
 
 def main():
-    """Main function of the App"""
-    st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com/?page_id=10) \n 
-👾 [Repo](https://github.com/EconoBen/economic_indicators)"""
-)
+    """Main function of the App""" 
+    run()
 
 if __name__ == "__main__":
     main()

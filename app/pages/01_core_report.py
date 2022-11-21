@@ -2,7 +2,8 @@ import streamlit as st
 from st_pages import add_page_title
 from app.utils import BLS
 from datetime import datetime
-
+from fredapi import Fred
+from os import environ
 add_page_title()
 
 today = datetime.today()
@@ -14,7 +15,21 @@ else:
     end_year = today.year
 
 bls = BLS()
+fred = Fred(api_key=environ.get("FREDKEY"))
 
+def get_interest_rate(interest_col):
+    data = fred.get_series('FEDFUNDS')
+    curr_rate = data[-1]
+    curr_month = data.index[-1].strftime("%B")
+    prev_rate = data[-2]
+    prev_month = data.index[-2].strftime("%B")
+    delta_rate = curr_rate-prev_rate
+
+    interest_col.metric(
+        label=f"Interest Rate ({curr_month})",
+        value=f"{curr_rate}%",
+        delta=delta_rate
+    )
 
 def get_unemployment_rate(unemployment_col):
     
@@ -109,18 +124,18 @@ def get_consumer_price_index(cpi_col):
 
 
 def run():   
+    st.markdown("## Macro Indicators")
+    interest_rate, cpi_rate, _ = st.columns(3)
+    get_interest_rate(interest_rate)
+    get_consumer_price_index(cpi_rate)
 
+    st.markdown("## Labor Indicators")
     unemployment_rate, hiring_rate, job_openings = st.columns(3)
-
     get_unemployment_rate(unemployment_rate)
     get_hiring_rate(hiring_rate)
     get_job_openings(job_openings)
 
-    cpi_rate, _, _ = st.columns(3)
-
-    get_consumer_price_index(cpi_rate)
-
-    st.caption("Source: Bureau of Labor Statistics. All stats seasonally adjusted")
+    st.caption("Sources: Bureau of Labor Statistics, FRED. All stats seasonally adjusted when available.")
 
 st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com/?page_id=10) \n 
 👾 [Repo](https://github.com/EconoBen/economic_indicators)"""
