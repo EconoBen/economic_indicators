@@ -82,6 +82,32 @@ def get_job_openings(openings_col):
         delta=f"{int((new_rate - old_rate)*1000):,}"
     )
 
+def get_consumer_price_index(cpi_col):
+    
+    data = bls.read_timeseries(value_status="Level",
+                        series_id="CUSR0000SA0", 
+                        series_choice="Consumer Price Index", 
+                        freq="M",
+                        start_year=start_year,
+                        end_year=end_year,
+                        )
+    
+    this_month_level = float(data[0][2])
+    curr_month = data[0][1]
+
+    last_month_level = float(data[1][2])
+    next_to_last_month_level = float(data[2][2])
+
+    curr_rate = round(((this_month_level-last_month_level)/last_month_level)*100,1)
+    last_rate = round(((last_month_level-next_to_last_month_level)/next_to_last_month_level)*100, 1)
+
+    cpi_col.metric(
+        label=f"Consumer Price Index ({curr_month})",
+        value=f"{curr_rate}%",
+        delta=round((curr_rate - last_rate), 1),
+    )
+
+
 def run():   
 
     unemployment_rate, hiring_rate, job_openings = st.columns(3)
@@ -89,6 +115,10 @@ def run():
     get_unemployment_rate(unemployment_rate)
     get_hiring_rate(hiring_rate)
     get_job_openings(job_openings)
+
+    cpi_rate, _, _ = st.columns(3)
+
+    get_consumer_price_index(cpi_rate)
 
     st.caption("Source: Bureau of Labor Statistics. All stats seasonally adjusted")
 
