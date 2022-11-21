@@ -1,24 +1,13 @@
 from datetime import datetime
 from json import load
-from os import environ, system
-from pathlib import Path
+from os import system
 
 import streamlit as st
-from dotenv import load_dotenv
+from st_pages import add_page_title
 
-from app.utils import read_timeseries
+from app.utils import BLS
 
-
-def get_api_key():
-    """Get BLS API Key"""
-    if Path("app/.env").exists():
-        load_dotenv()
-
-    key = environ["APIKEY"]
-
-    assert isinstance(key, str)
-
-    return key
+add_page_title()
 
 
 def run():
@@ -27,8 +16,6 @@ def run():
     """
 
     st.title("Labor Indicators")
-    
-    
 
     with open("app/BLS_series_mapping.json") as json_file:
         bls_mapping = load(json_file)
@@ -45,7 +32,7 @@ def run():
     end_year_options = [str(x) for x in range(int(start_year), int(current_year) + 1)][
         ::-1
     ]
-    
+
     end_year = st.selectbox("End Year", end_year_options, index=0)
 
     value_type = ["Level", "Index from Start Year"]
@@ -56,13 +43,17 @@ def run():
 
     system("poetry run streamlit cache clear")
 
-    read_timeseries(
+    bls = BLS()
+    bls.read_timeseries(
         series_id=series_id,
         series_choice=series_choice,
         value_status=value_status,
         freq=freq_id,
         start_year=start_year,
         end_year=end_year,
-        apikey=get_api_key(),
+        plot=True
     )
     st.caption("Source: US Dept. of Labor, Bureau of Labor Statistics")
+
+
+run()

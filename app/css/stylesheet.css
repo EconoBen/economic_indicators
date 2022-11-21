@@ -1,0 +1,3 @@
+.container { font-size:1.2em; width:6em; height:4em; position:absolute; top:0; left:0; right:0; bottom:0; margin:auto; cursor:pointer;}
+.dot-arrow { position:absolute; top:0; left:0; right:0; bottom:100%; margin:auto; background-color:red; width:2em; height:2em; border-radius:50%; }
+.dot-arrow:after, .dot-arrow:before { content:" "; background-color:inherit; width:2em; height:2em; border-radius:50%; position: absolute; transition:all 0.35s cubic-bezier(0.68, -0.55, 0.27, 1.55); }

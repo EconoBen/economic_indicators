@@ -1,0 +1,14 @@
+[[pages]]
+path = "app/pages/01_monthly_report.py"
+name = "Monthly Report"
+icon = "📊"
+
+[[pages]]
+path = "app/pages/03_labor.py"
+name = "Labor"
+icon = "👨‍🏭"
+
+[[pages]]
+path = "app/pages/04_debt.py"
+name = "Debt"
+icon = "🧾"

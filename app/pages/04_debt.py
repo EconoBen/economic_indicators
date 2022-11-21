@@ -7,7 +7,12 @@ import streamlit as st
 
 sys.path.append(op.abspath(op.join(op.dirname(__file__), "..")))
 
-from app.contents import household_debt_workbook
+from st_pages import add_page_title
+
+add_page_title()
+
+
+from app.pages import household_debt_workbook
 
 sheet_name = "Page 3 Data"
 title = "Total Household Debt Balance and Its Composition"
@@ -46,8 +51,8 @@ def bar_plot():
         y=total_debt.columns,
         labels={"variable": "Debt Type"},
         title=title,
-        width=800, 
-        height=400
+        width=800,
+        height=400,
     )
     fig.update_xaxes(
         tickvals=total_debt.index[::4], tickangle=45, tickfont=dict(size=12)
@@ -56,7 +61,7 @@ def bar_plot():
         title=y_axis, tickfont=dict(size=12), tickprefix="$", showgrid=False
     )
 
-    fig.update_layout(width=1000, height=1000)
+    fig.update_layout(width=1000, height=500)
 
     st.plotly_chart(fig, use_container_width=True)
     st.caption(source)
@@ -64,3 +69,6 @@ def bar_plot():
 
 def run():
     bar_plot()
+
+
+run()
