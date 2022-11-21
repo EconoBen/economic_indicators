@@ -70,5 +70,7 @@ def bar_plot():
 def run():
     bar_plot()
 
-
+st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com) \n 
+👾 [Repo](https://github.com/EconoBen/economic_indicators)"""
+)
 run()

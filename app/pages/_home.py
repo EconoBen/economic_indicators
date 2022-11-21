@@ -16,5 +16,8 @@ def run():
                 🧾 Debt: Debt Data
     """)
 
+st.sidebar.caption("""👨‍💻 [About](https://benjaminlabaschin.com) \n 
+👾 [Repo](https://github.com/EconoBen/economic_indicators)"""
+)
 
 run()
