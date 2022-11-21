@@ -89,7 +89,6 @@ python-dateutil==2.8.2
 python-dotenv==0.21.0 
 pytz-deprecation-shim==0.1.0.post0 
 pytz==2022.6 
-pywin32==305 
 pywinpty==2.0.9 
 pyzmq==24.0.1 
 qtconsole==5.4.0 
